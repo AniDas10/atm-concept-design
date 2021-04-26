@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+</head>
+
+<style>
+.PINtext {
+	font-size:20px;
+	width: 275px;
+  height: 50px;
+	text-align: center;
+  border-radius: 12px;
+}
+.calcBtn {
+	font-size: 20px;
+	width: 70px;
+    height: 70px;
+    margin: 12px;
+    border-radius: 12px;
+}
+.backButton{
+  position: absolute;
+  height:80px;
+  width:250px;
+  border: 5px outset red;
+  cursor:pointer;
+  float: right;
+  font-size: 20px;
+  margin:10px;
+}
+.backButton:hover{
+    background-color: red;
+    color:white;
+}
+</style>
+
+<body onload="emptyCode();">
+<div class="container">
+
+<form action="confirmChangePIN2.html" method="get">
+  <br/>
+  <div class="row">
+    <h2 style="text-align: center">Please enter your New PIN: </h2>
+  </div>
+  <br/><br/>
+  <div class="row">
+    <div class="col-md-6">
+      <p align="center"><input  id="newPIN" name="newPIN" class="PINtext" type="password" placeholder="New PIN" maxlength="4"/></p>
+
+      <div id="keyboard" align="center">
+          <input class="calcBtn" id="btn1" type="button" onclick="input(this);" value="1" />
+          <input class="calcBtn" id="btn2" type="button" onclick="input(this);" value="2" />
+          <input class="calcBtn" id="btn3" type="button" onclick="input(this);" value="3"/>
+          <br />
+          <input class="calcBtn" id="btn4" type="button" onclick="input(this);" value="4"/>
+          <input class="calcBtn" id="btn5" type="button" onclick="input(this);" value="5"/>
+          <input class="calcBtn" id="btn6" type="button" onclick="input(this);" value="6"/>
+          <br />
+          <input class="calcBtn" id="btn7" type="button" onclick="input(this);" value="7"/>
+          <input class="calcBtn" id="btn8" type="button" onclick="input(this);" value="8"/>
+          <input class="calcBtn" id="btn9" type="button" onclick="input(this);" value="9"/>
+          <br />
+          <input class="calcBtn" id="btnEnt" type="button" onclick="submitForm()" style="color:green" value="Enter"/>
+          <input class="calcBtn" id="btn0" type="button" onclick="input(this)" value="0"/>
+          <input class="calcBtn" id="btnDel" type="button" style="color:red" value="Delete" onclick="del();" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div style="width: 500px;padding: 10px;border: 5px solid gray;margin: 15px">
+        <br/>
+        <h3>1. Use your hand to hide the numbers you enter</h3>
+        <h3>2. New Pin must be of 4 digits only</h3>
+        <h3>3. Do not set the same password again</h3>
+        <br/><br/>
+        <p align="center">            
+          <a href="home.html" style="" class="btn btn-danger btn-md returnCardButton">Back</a>
+        </p>
+    </div>
+    </div>
+  </div>
+</form>
+
+
+<script>
+function submitForm() { document.forms[0].submit(); }
+function emptyCode()  { document.forms[0].newPIN.value = ""; }
+function input(e) {
+    var newPIN = document.getElementById("newPIN");
+    if (newPIN.value.length < 4) {
+      newPIN.value = newPIN.value + e.value;
+	   }
+}
+function del() {
+	var newPIN = document.getElementById("newPIN");
+	newPIN.value = newPIN.value.substr(0, newPIN.value.length-1);
+}
+</script>
+</div>
+</body>
+</html>
